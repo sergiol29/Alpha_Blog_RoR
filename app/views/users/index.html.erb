@@ -1,0 +1,33 @@
+<h2 class="center">Listing users</h2>
+
+<p>
+    <%= link_to "Create a new user", new_user_path, class: "btn btn-sm btn-info" %>
+</p>
+
+<!-- Table -->
+<table class="table">
+    <tr>
+        <th> Name </th>
+        <th> Description </th>
+        <th> Town </th>
+        <th> Count </th>
+        <th> Username </th>
+        <th> Email </th>
+        <th> Edit </th>
+        <th> Show </th>
+        <th> Delete </th>
+    </tr>
+    <% @user.each do |f| %>
+    <tr>
+        <td><%= f.name %></td>
+        <td><%= truncate(f.description, length: 50) %></td>
+        <td><%= f.town %></td>
+        <td><%= f.count %></td>
+        <td><%= f.username %></td>
+        <td><%= f.email %></td>
+        <td><%= link_to "Edit", edit_user_path(f), class: "btn btn-xs btn-primary" %></td>
+        <td><%= link_to "Show", user_path(f), class: "btn btn-xs btn-warning" %></td>
+        <td><%= link_to "Delete", user_path(f), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger"%></td>
+    </tr>
+    <% end %>
+</table>

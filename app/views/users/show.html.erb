@@ -1,0 +1,17 @@
+<h2 align="center">Show user </h2>
+
+<div class="well col-xs-8 col-xs-offset-2">
+    <h5 class="description"><strong>Name:</strong> <%= @user.name %></h5>
+    <hr>
+    <h5 class="description"><strong>Description:</strong> <%= @user.description %></h5>
+    <h5 class="description"><strong>Town:</strong> <%= @user.town %></h5>
+    <h5 class="description"><strong>Count:</strong> <%= @user.count %></h5>
+    <h5 class="description"><strong>Username:</strong> <%= @user.username %></h5>
+    <h5 class="description"><strong>Email:</strong> <%= @user.email %></h5>
+
+    <div class="users-actions">
+        <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-xs btn-primary" %>
+        <%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete the user?"}, class: "btn btn-xs btn-danger" %>
+        <%= link_to "View all user", users_path, class: "btn btn-xs btn-success" %>
+    </div>
+</div>
