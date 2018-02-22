@@ -1,7 +1,14 @@
 class ArticlesController < ApplicationController
+
+  # required logged all method for look views 
+  before_action :required_user
+
+  # required logged and only permit edit, update, destroy a articles created four you
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   # GET /articles
   def index
-    @article = Article.all
+    @article = Article.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /articles/1
@@ -25,7 +32,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     
     # Get User a create article
-    @article.user = User.first
+    @article.user = current_user
 
     if @article.save
       flash[:success] = "Article was successfully created"
@@ -53,6 +60,15 @@ class ArticlesController < ApplicationController
     @article.destroy
     flash[:danger] = "Article was successfully delete"
     redirect_to articles_path
+  end
+
+  def require_same_user
+    @article = Article.find(params[:id])
+    
+    if current_user != @article.user
+      flash[:danger] = "You can only edit or delete your own articles "
+      redirect_to articles_path
+    end
   end
 
   private

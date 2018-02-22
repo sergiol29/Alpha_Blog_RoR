@@ -12,6 +12,9 @@ gem 'jquery-rails'
 gem 'rails', '~> 5.1.5'
 # Use bcrypt for secure password of User.password
 gem 'bcrypt', '~> 3.1.7'
+# Use pagination in views
+gem 'will_paginate', '~> 3.1.5'
+gem 'bootstrap-will_paginate', '~> 1.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server

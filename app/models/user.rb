@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
     # before save, email change to lowecasse
     before_save { self.email = email.downcase }
+    before_save { self.username = username.downcase }
 
     # validate values
     validates :name, presence: true, length: {minimum: 3, maximum: 150}
